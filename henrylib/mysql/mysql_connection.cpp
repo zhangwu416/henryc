@@ -6,6 +6,8 @@ namespace henrylib
     namespace mysqlconnection
     {
         status_callback_fun_t mysql_connection_t::m_callback_fun;
+        boost::mutex    mysql_connection_t::m_mutex;
+
         mysql_connection_t::mysql_connection_t(const string& db_id_, const string& host_, uint32_t port_,
                 const string& user_, const string& pwd_, const string& database_) :
             m_connected(false), 
@@ -33,7 +35,7 @@ namespace henrylib
                 return 0;
             }
 
-  //          scoped_lock_t lock(m_mutex);
+            scoped_lock_t lock(m_mutex);
 
             if (!mysql_init(&m_mysql))
             {
@@ -72,7 +74,7 @@ namespace henrylib
                 return;
             }
 
- //           scoped_lock_t lock(m_mutex);
+            scoped_lock_t lock(m_mutex);
             m_connected = false;
             mysql_close(&m_mysql);
         }
@@ -90,12 +92,12 @@ namespace henrylib
             return 0;
         }
 
-        inline bool mysql_connection_t::connected()
+        bool mysql_connection_t::connected()
         {
             return m_connected;
         }
 
-        inline void mysql_connection_t::operation_error_i(const string& sql_)
+        void mysql_connection_t::operation_error_i(const string& sql_)
         {
             //! 1. log error
             //! 2. log the sql to back up
@@ -143,39 +145,39 @@ namespace henrylib
             return 0;
         }
 
-        inline uint64_t mysql_connection_t::affected_rows()
+        uint64_t mysql_connection_t::affected_rows()
         {
             return (uint64_t)mysql_affected_rows(&m_mysql);
         };
 
-        inline uint64_t mysql_connection_t::get_server_version()
+        uint64_t mysql_connection_t::get_server_version()
         {
             return (uint64_t)mysql_get_server_version(&m_mysql);
         };
 
-        inline void mysql_connection_t::start_transaction()
+        void mysql_connection_t::start_transaction()
         {
             execute("START TRANSACTION;");
         }
 
-        inline void mysql_connection_t::rollback()
+        void mysql_connection_t::rollback()
         {
             execute("ROLLBACK;");
         }
 
-        inline void mysql_connection_t::commit()
+        void mysql_connection_t::commit()
         {
             execute("COMMIT;");
         }
         
-        inline void mysql_connection_t::set_callback_fun(status_callback_fun_t callback_fun_)
+        void mysql_connection_t::set_callback_fun(status_callback_fun_t callback_fun_)
         {
             m_callback_fun = callback_fun_;
         }
 
-        inline mysql_result_t mysql_connection_t::get_result()
+        mysql_res_t mysql_connection_t::get_result()
         {
-            mysql_result_t result = mysql_store_result(&m_mysql);
+            mysql_res_t result = mysql_store_result(&m_mysql);
             if (!result)
             {
                 //! log error mysql_error(&m_mysql)
