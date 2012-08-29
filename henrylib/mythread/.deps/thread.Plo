@@ -1,0 +1,93 @@
+thread.lo thread.o: thread.cpp /usr/include/signal.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h /usr/include/bits/sigset.h \
+  /usr/include/bits/types.h \
+  /usr/lib/gcc/x86_64-redhat-linux/4.1.2/include/stddef.h \
+  /usr/include/bits/typesizes.h /usr/include/bits/signum.h \
+  /usr/include/time.h /usr/include/bits/siginfo.h \
+  /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
+  /usr/include/bits/sigstack.h /usr/include/sys/ucontext.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/bits/sigthread.h thread.h \
+  /usr/include/pthread.h /usr/include/endian.h /usr/include/bits/endian.h \
+  /usr/include/sched.h /usr/include/bits/sched.h /usr/include/bits/time.h \
+  /usr/include/xlocale.h /usr/include/bits/setjmp.h \
+  ../../henrylib/myutility/noncopyable.h \
+  ../../henrylib/myutility/thread_tools.h /usr/include/errno.h \
+  /usr/include/bits/errno.h /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h /usr/include/asm-x86_64/errno.h \
+  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h
+
+/usr/include/signal.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/types.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.1.2/include/stddef.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/bits/signum.h:
+
+/usr/include/time.h:
+
+/usr/include/bits/siginfo.h:
+
+/usr/include/bits/sigaction.h:
+
+/usr/include/bits/sigcontext.h:
+
+/usr/include/bits/sigstack.h:
+
+/usr/include/sys/ucontext.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/bits/sigthread.h:
+
+thread.h:
+
+/usr/include/pthread.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/sched.h:
+
+/usr/include/bits/sched.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/bits/setjmp.h:
+
+../../henrylib/myutility/noncopyable.h:
+
+../../henrylib/myutility/thread_tools.h:
+
+/usr/include/errno.h:
+
+/usr/include/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/asm/errno.h:
+
+/usr/include/asm-x86_64/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:
