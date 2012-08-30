@@ -31,7 +31,7 @@ SET_TARGET_PROPERTIES(boost_system PROPERTIES IMPORTED_LOCATION
 
 #include myown mysql impl
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mysql)
-MESSAGE("myown mysql dir:" ${PROJECT_SOURCE_DIR}/henrylib/mysql)
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mylog)
 
 
 ADD_SUBDIRECTORY(henrylib)
