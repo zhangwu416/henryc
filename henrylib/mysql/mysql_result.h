@@ -6,12 +6,13 @@
 using namespace std;
 
 #include "mysql_def.h"
+#include <boost/noncopyable.hpp>
 
 namespace henrylib
 {
     namespace mysqlconnection
     {
-        class mysql_result_t
+        class mysql_result_t : public boost::noncopyable
         {
             public:
                 mysql_result_t();

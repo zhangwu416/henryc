@@ -249,9 +249,6 @@ namespace henrylib
             return m_column_info[index_].name;
         }
 
-
-
-        
         unsigned long* mysql_result_t::fetch_field_lengths()
         { 
             if (!m_result)

@@ -3,6 +3,7 @@ using namespace std;
 
 #include "mysql_connection.h"
 #include "mysql_result.h"
+#include "sql_result.h"
 using namespace henrylib::mysqlconnection;
 
 int main()
@@ -17,30 +18,9 @@ int main()
     mysql_res_t res = mysql.get_result();
     result.reset_result(res);
 
-    int row = result.get_row_num();
-    int column = result.get_column_num();
-    cout << "row num:" << row << endl;
-    cout << "column num:" << column << endl;
-    for (int j = 0; j < column; ++j)
-    {
-        cout << result.get_column_name_by_index(j) << "\t";
-    }
-    cout << endl << "-------:" << result.get_column_index_by_name("name") << "-----------------" << endl;
-    for (int i = 0; i < row; ++i)
-    {
-        if (result.fetch_row())
-        {
-            cout << "error" << endl;
-            break;
-        }
-
-        for (int j = 0; j < column; ++j)
-        {
-            cout << result.get_column_value_by_index(j) << "\t";
-        }
-        cout << endl;
-
-    }
+    sql_result_all_t result_all;
+    result_all.set_sql_result(result);
+    result_all.dump();
 
     sleep(100);
     return 0;
