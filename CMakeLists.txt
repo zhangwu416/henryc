@@ -29,10 +29,11 @@ ADD_LIBRARY(boost_system SHARED IMPORTED)
 SET_TARGET_PROPERTIES(boost_system PROPERTIES IMPORTED_LOCATION
    "/usr/local/lib/libboost_system.a")
 
-#include myown mysql impl
+#include myown lib
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/myutility)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mysql)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mylog)
 
-
+#compile lib add src
 ADD_SUBDIRECTORY(henrylib)
 ADD_SUBDIRECTORY(test_lib)
