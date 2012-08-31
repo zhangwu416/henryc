@@ -34,6 +34,10 @@ INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/myutility)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mysql)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mylog)
 
+#define log enable level module
+#OPTION(DEBUG_MODE "ON for debug or OFF for release" ON)
+ADD_DEFINITIONS(-DENABLE_LOG_TRACE)
+
 #compile lib add src
 ADD_SUBDIRECTORY(henrylib)
 ADD_SUBDIRECTORY(test_lib)

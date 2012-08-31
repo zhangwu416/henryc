@@ -34,8 +34,8 @@ namespace henrylib
                 void set_file_name(const string& file_name_);
                 void set_max_size(int size_);
                 void set_max_line(int line_);
-                void set_modules(const string& module_, bool is_set_);
-                void set_level(log_level_flag_e level_, bool is_set_);
+                void set_modules(const string& module_, bool is_set_ = true);
+                void set_level(log_level_flag_e level_, bool is_set_ = true);
                 void set_print_file(bool is_set_);
                 void set_print_screen(bool is_set_);
                 static void set_callback_func(call_back_func_t func_);

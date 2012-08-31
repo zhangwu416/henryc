@@ -155,6 +155,7 @@ namespace henrylib
                 ret = mkdir(m_path.c_str(), 0777);
                 if (ret)
                 {
+cout << "=-----opened------------:" << m_path << endl;
                     cerr << "log_impl_t::open()path:" << m_path << ", error:" << strerror(errno) << endl;
                     return -1;
                 }
@@ -206,6 +207,11 @@ namespace henrylib
             va_start(app, format_);
             int ret = log_i(module_, LF_TRACE, format_, app, "", "");
             va_end(app);
+            
+            if (m_call_back)
+            {
+                m_call_back();
+            }
 
             return ret;
         }
@@ -296,8 +302,6 @@ namespace henrylib
 
         void log_impl_t::handle_print_file_i(const string& content_)
         {
-            //! TODO
-            //m_ofstream << content_;
             time_t now = ::time(NULL);
             struct tm*  tmp = ::localtime(&now);
             if ((tmp->tm_year + 1900 != m_year) || (tmp->tm_mon + 1 != m_month) || (tmp->tm_mday != m_day))
@@ -329,7 +333,7 @@ namespace henrylib
                 m_ofstream.open(buff);
             }
 
-            if ((m_cur_line > m_max_line) || (m_cur_size > m_max_size))
+            if ((m_cur_line >= m_max_line) || (m_cur_size >= m_max_size))
             {
                 m_ofstream.close();
                 m_ofstream.clear();
@@ -347,6 +351,7 @@ namespace henrylib
             ++m_cur_line;
             m_cur_size += content_.length();
             m_ofstream << content_;
+            m_ofstream.flush();
         }
 
     }

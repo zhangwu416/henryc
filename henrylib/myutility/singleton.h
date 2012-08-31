@@ -30,8 +30,11 @@ namespace henrylib
                     }
                 }
             private:
-                static type*   m_instance;
-        }
+                static type* volatile  m_instance;
+        };
+
+        template<class type>
+        type* volatile singleton_t<type>::m_instance = 0;
     }
 }
 
