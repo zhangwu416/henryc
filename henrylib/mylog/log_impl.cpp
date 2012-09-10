@@ -155,7 +155,6 @@ namespace henrylib
                 ret = mkdir(m_path.c_str(), 0777);
                 if (ret)
                 {
-cout << "=-----opened------------:" << m_path << endl;
                     cerr << "log_impl_t::open()path:" << m_path << ", error:" << strerror(errno) << endl;
                     return -1;
                 }
@@ -322,7 +321,7 @@ cout << "=-----opened------------:" << m_path << endl;
                 sprintf(buff, "%s/%04d-%02d-%02d", m_path.c_str(), m_year, m_month, m_day);
                 if (access(buff, F_OK))
                 {
-                    if (mkdir(buff, F_OK))
+                    if (mkdir(buff, 0777))
                     {
                         cerr << "log_impl_t::handle_print_file_i()path:" << buff << ", error:" << strerror(errno) << endl;
                         return;
