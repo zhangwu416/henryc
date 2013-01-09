@@ -2,6 +2,12 @@
 #define _LOG_DEF_H_
 
 #include "singleton.h"
+using namespace henrylib::myutility;
+
+namespace henrylib
+{
+    namespace mylog
+    {
 
 typedef void (*call_back_func_t)();
         
@@ -56,5 +62,8 @@ enum log_level_flag_e
 #else
 #define LOG_DEBUG(x) {}
 #endif
+
+    }
+}
 
 #endif

@@ -4,6 +4,11 @@
 
 #include "log_impl.h"
 
+namespace henrylib
+{
+    namespace mylog
+    {
+
 const char* log_impl_t::m_log_level_dsp[] = {
     "FATAL",
     "ERROR",
@@ -455,3 +460,5 @@ void log_impl_t::handle_print_file_i(const string& content_)
     m_ofstream.flush();
 }
 
+    }
+}

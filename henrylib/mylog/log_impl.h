@@ -14,6 +14,11 @@ using namespace std;
 
 #include "log_def.h"
 
+namespace henrylib
+{
+    namespace mylog
+    {
+
 class log_impl_t : public boost::noncopyable
 {
     public:
@@ -86,4 +91,7 @@ class log_impl_t : public boost::noncopyable
         const static char*              m_log_level_dsp[];
 
 };
+
+    }
+}
 #endif

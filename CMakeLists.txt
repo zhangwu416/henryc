@@ -41,3 +41,4 @@ ADD_DEFINITIONS(-DENABLE_LOG_TRACE)
 #compile lib add src
 ADD_SUBDIRECTORY(henrylib)
 ADD_SUBDIRECTORY(test_lib)
+ADD_SUBDIRECTORY(dayexercise)

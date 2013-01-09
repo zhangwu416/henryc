@@ -18,7 +18,6 @@ namespace henrylib
                     }
 
                     return *m_instance;
-
                 }
             private:
                 static void destory()

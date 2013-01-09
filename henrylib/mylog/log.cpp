@@ -4,6 +4,13 @@
 
 #include "singleton.h"
 
+using namespace henrylib::myutility;
+
+namespace henrylib
+{
+    namespace mylog
+    {
+
 void init_log(const string& path_, const string& file_name_,
         bool is_print_file_, bool is_print_screen_,
         uint32_t log_level_, const vector<string>& modules_,
@@ -70,3 +77,5 @@ void init_log(const string& path_, const string& file_name_,
 {
 }
 
+    }
+}
