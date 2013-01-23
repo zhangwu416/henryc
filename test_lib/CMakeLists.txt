@@ -1,2 +1,3 @@
 ADD_SUBDIRECTORY(test_mysql)
 ADD_SUBDIRECTORY(test_mylog)
+ADD_SUBDIRECTORY(test_mynetwork)
