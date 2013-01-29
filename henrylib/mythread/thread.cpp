@@ -1,4 +1,8 @@
 #include <signal.h>
+#include <syscall.h>
+#include <unistd.h>
+#include <iostream>
+
 #include "thread.h"
 #include "thread_tools.h"
 
@@ -6,6 +10,23 @@ namespace henrylib
 {
     namespace mythread
     {
+        __thread int t_cachedtid;
+
+        int current_thread_t::tid()
+        {
+            if (t_cachedtid == 0)
+            {
+                t_cachedtid = ::syscall(SYS_gettid);
+            }
+            return t_cachedtid;
+        }
+
+        bool current_thread_t::is_main_thread()
+        {
+            return tid() == ::getpid();
+        }
+
+
         thread_t::thread_t(bool joinable_):
             m_is_joinable(joinable_),
             m_is_stop(false)
@@ -34,24 +55,17 @@ namespace henrylib
                 {
                     if (thead->is_stop())
                     {
-                        delete thead;
-                        pthread_exit(NULL);
+                        break;
+                    }
+                    else
+                    {
+                        //! test
+                        std::cout << "thread_func:" << current_thread_t::tid() << "/" << current_thread_t::is_main_thread() << std::endl;
+                        thread->do_func();
                     }
                 }
-                delete thead;
-                pthread_exit(NULL);
             }
             return NULL;
-        }
-
-        inline void thread_t::stop()
-        {
-            m_is_stop = true;
-        }
-
-        inline bool thread_t::is_stop() const
-        {
-            return m_is_stop;
         }
 
         bool thread_t::start()
@@ -72,6 +86,10 @@ namespace henrylib
             }
 
             return true;
+        }
+
+        void thread_t::do_func()
+        {
         }
     }
 }

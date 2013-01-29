@@ -34,6 +34,7 @@ INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/myutility)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mysql)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mylog)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mynetwork)
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/henrylib/mythread)
 
 #define log enable level module
 #OPTION(DEBUG_MODE "ON for debug or OFF for release" ON)

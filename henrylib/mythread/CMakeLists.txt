@@ -1,0 +1,3 @@
+SET(MYTHREAD_LIST
+    thread.cpp)
+ADD_LIBRARY(mythread ${MYTHREAD_LIST})
